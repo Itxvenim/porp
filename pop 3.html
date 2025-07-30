@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffd6e0 0%, #ffb6c1 100%);
+      animation: backgroundShift 10s infinite alternate;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      text-align: center;
+    }
+
+    @keyframes backgroundShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(20deg); }
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: #fff;
+      font-size: 2.5em;
+      animation: floatHearts 10s linear infinite;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    .teddy {
+      width: 200px;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    .teddy.move-left {
+      animation: slideLeft 2s forwards;
+      animation-delay: 2s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(-150px); opacity: 1; }
+    }
+
+    .proposal-text {
+      font-size: 3em;
+      font-family: 'Great Vibes', cursive;
+      color: #c9184a;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      animation-delay: 4s;
+      text-shadow: 1px 1px 3px #ffffffaa;
+      max-width: 90%;
+    }
+
+    .yes-btn, .next-btn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      font-size: 1.4em;
+      background-color: #ff6f91;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      transition: transform 0.3s ease;
+    }
+
+    .yes-btn {
+      animation-delay: 6s;
+    }
+
+    .yes-btn:hover, .next-btn:hover {
+      transform: scale(1.08);
+      background-color: #ff4e78;
+    }
+
+    .next-btn {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="hearts">
+    <div class="heart" style="left: 10%;">💖</div>
+    <div class="heart" style="left: 25%; animation-delay: 1s;">💘</div>
+    <div class="heart" style="left: 50%; animation-delay: 2s;">💝</div>
+    <div class="heart" style="left: 75%; animation-delay: 3s;">❤️</div>
+    <div class="heart" style="left: 90%; animation-delay: 4s;">💞</div>
+  </div>
+
+  <img id="teddy" class="teddy" src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif" alt="hugging teddy bear">
+
+  <div class="proposal-text">In you, I’ve found my today and all of my tomorrows. 💖</div>
+
+  <button id="yesBtn" class="yes-btn" onclick="showNext()">Yes! 💖</button>
+  <button id="nextBtn" class="next-btn" onclick="goToCelebration()">Next 💌</button>
+
+  <script>
+    // Animate teddy to move left
+    window.onload = function () {
+      const teddy = document.getElementById('teddy');
+      teddy.classList.add('move-left');
+    };
+
+    function showNext() {
+      alert("You said YES! 💕 You’ve made me the happiest person alive!");
+      document.getElementById('yesBtn').style.display = 'none';
+      const next = document.getElementById('nextBtn');
+      next.style.display = 'inline-block';
+      next.style.opacity = '1';
+    }
+
+    function goToCelebration() {
+      // Replace with your actual celebration page link
+      window.location.href = "celebration.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Forever</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: linear-gradient(135deg, #000000, #8b0000);
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 30px;
+      border: 2px solid #ff4e78;
+      box-shadow: 0 0 25px #ff4e78aa;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .love-letter {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      color: #ff6f91;
+      margin-bottom: 40px;
+      white-space: pre-line;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.4em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: absolute;
+    }
+
+    #yesBtn {
+      background-color: #ff4e78;
+      color: white;
+      left: 25%;
+    }
+
+    #noBtn {
+      background-color: #ffffff;
+      color: #ff4e78;
+      left: 60%;
+    }
+
+    #loveMessage {
+      display: none;
+      font-size: 3em;
+      margin-top: 30px;
+      color: #ffccd5;
+      animation: pop 1s ease-out forwards;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.2); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="love-letter">
+      I want to make you my life partner and my whole lifeline.
+      <br><br>
+      From the moment I met you, my world changed in ways I can't describe.
+      You brought joy, comfort, and endless smiles into my life.
+      You are the poetry in my silence, the calm in my storms,
+      the spark in every heartbeat.
+      <br><br>
+      So... will you let me love you for a lifetime? 💌
+    </div>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="showLove()">Yes 💖</button>
+      <button id="noBtn" onmouseover="moveButton()">No 🙈</button>
+    </div>
+
+    <div id="loveMessage">Awwww 😍 Love you Dodi! 💞</div>
+  </div>
+
+  <script>
+    let noBtn = document.getElementById('noBtn');
+    let clickCount = 0;
+
+    function moveButton() {
+      clickCount++;
+      let container = document.querySelector('.container');
+      let containerWidth = container.offsetWidth - noBtn.offsetWidth;
+      let containerHeight = container.offsetHeight - noBtn.offsetHeight;
+
+      let newX = Math.random() * containerWidth;
+      let newY = Math.random() * containerHeight;
+
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    }
+
+    function showLove() {
+      document.getElementById('yesBtn').style.display = 'none';
+      document.getElementById('noBtn').style.display = 'none';
+      document.getElementById('loveMessage').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

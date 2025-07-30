@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Love</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      animation: backgroundPulse 8s infinite alternate;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    @keyframes backgroundPulse {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(30deg); }
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #fff;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .emoji {
+      font-size: 2em;
+      margin-top: 10px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .button-container {
+      margin-top: 50px;
+      position: relative;
+    }
+
+    .click-text {
+      position: absolute;
+      left: -200px;
+      top: 10px;
+      font-size: 1.2em;
+      color: #fff;
+      animation: slideLeft 2s ease-in-out infinite alternate;
+      transition: opacity 0.5s ease;
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(0); opacity: 0.8; }
+      to { transform: translateX(-10px); opacity: 1; }
+    }
+
+    .start-btn, .next-btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff6f91;
+      color: #fff;
+      font-size: 1.2em;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .start-btn:hover, .next-btn:hover {
+      transform: scale(1.05);
+      background-color: #ff4e78;
+    }
+
+    #timer {
+      margin-top: 50px;
+      font-size: 6em;
+      font-family: 'Great Vibes', cursive;
+      color: #ff2e63;
+      display: none;
+      animation: pulseTimer 1s infinite;
+    }
+
+    @keyframes pulseTimer {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .next-btn {
+      display: none;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Please be patient, something is coming... 💌✨🌹</h1>
+
+  <div class="button-container">
+    <div class="click-text" id="clickText">👉 Please click here</div>
+    <button class="start-btn" id="startBtn" onclick="startCountdown()">Click Me</button>
+  </div>
+
+  <div id="timer">10</div>
+  <button class="next-btn" onclick="goNext()">Next</button>
+
+  <script>
+    function startCountdown() {
+      const timer = document.getElementById("timer");
+      const nextBtn = document.querySelector(".next-btn");
+      const clickText = document.getElementById("clickText");
+      const startBtn = document.getElementById("startBtn");
+
+      // Hide text and button
+      clickText.style.display = "none";
+      startBtn.style.display = "none";
+
+      // Show timer
+      timer.style.display = "block";
+
+      let count = 10;
+      timer.textContent = count;
+
+      const interval = setInterval(() => {
+        count--;
+        timer.textContent = count;
+
+        if (count < 0) {
+          clearInterval(interval);
+          timer.style.display = "none";
+          nextBtn.style.display = "inline-block";
+        }
+      }, 1000);
+    }
+
+    function goNext() {
+      window.location.href = "next.html"; // Change to your proposal page
+    }
+  </script>
+</body>
+</html>
